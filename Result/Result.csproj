@@ -1,8 +1,10 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
+    
     <PropertyGroup>
+        <PackageId>luxick.Result</PackageId>
         <Version>1.0.0</Version>
         <Authors>luxick</Authors>
+        <Description>Generic wrappers for operation results</Description>
         
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
