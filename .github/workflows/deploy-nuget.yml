@@ -22,7 +22,7 @@ jobs:
     - name: Test
       run: dotnet test --no-build -c Release --verbosity normal
     - name: Pack
-      run: dotnet pack --no-build --output ./nupkgs -p:NuspecFile=./Result/Result.nuspec -p:NuspecBasePath=./Result/
+      run: dotnet pack --no-build --output ./nupkgs -c Release
       
     - uses: actions/upload-artifact@v3
       with:
