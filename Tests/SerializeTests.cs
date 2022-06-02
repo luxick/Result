@@ -7,9 +7,9 @@ public class SerializeTests
 {
     private class TestClass
     {
-        public string Text { get; set; }
+        public string Text { get; set; } = "";
 
-        public string Something { get; set; }
+        public string Something { get; set; } = "";
 
         public DateTime Timestamp { get; set; } = DateTime.Now;
     }
