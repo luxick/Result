@@ -1,5 +1,5 @@
 ﻿using System.Text.Json;
-using EAS.Result;
+using luxick.Result;
 
 namespace Tests;
 

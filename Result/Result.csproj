@@ -5,8 +5,8 @@
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>
         
-        <RootNamespace>EAS.Result</RootNamespace>
-        <AssemblyName>EAS.Result</AssemblyName>
+        <RootNamespace>luxick.Result</RootNamespace>
+        <AssemblyName>luxick.Result</AssemblyName>
     </PropertyGroup>
 
 </Project>

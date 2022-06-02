@@ -1,4 +1,4 @@
-﻿namespace EAS.Result;
+﻿namespace luxick.Result;
 
 [Serializable]
 public sealed class Error : Result

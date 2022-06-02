@@ -1,4 +1,4 @@
-using EAS.Result;
+using luxick.Result;
 
 namespace Tests;
 

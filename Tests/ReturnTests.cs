@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using EAS.Result;
+using luxick.Result;
 using NUnit.Framework.Internal;
 
 namespace Tests;

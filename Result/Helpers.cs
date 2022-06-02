@@ -1,4 +1,4 @@
-﻿namespace EAS.Result;
+﻿namespace luxick.Result;
 
 internal static class Helpers
 {

@@ -1,6 +1,6 @@
 ﻿using System.Text.Json;
 
-namespace EAS.Result;
+namespace luxick.Result;
 
 [Serializable]
 public abstract class Result
