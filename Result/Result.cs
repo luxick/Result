@@ -65,6 +65,6 @@ public abstract class Result<T> : Result
     /// </summary>
     /// <param name="json">the JSON </param>
     /// <returns>A Result subclass</returns>
-    public new static Result FromJson(string json) => JsonSerializer.Deserialize<Result<T>>(json, _deserializeSettings)!;
+    public new static Result<T> FromJson(string json) => JsonSerializer.Deserialize<Result<T>>(json, _deserializeSettings)!;
 
 }

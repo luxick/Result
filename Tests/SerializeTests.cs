@@ -97,4 +97,45 @@ public class SerializeTests
         Assert.IsTrue(result is Error<TestClass>);
 
     }
+
+    [Test]
+    public void DeserializeLessSpecificErrorShouldWork()
+    {
+        var genericResult = new Error<TestClass>("Some thing wrong");
+        var json = JsonSerializer.Serialize(genericResult);
+        Result result = new Ok();
+        Assert.DoesNotThrow(() => result = Result.FromJson(json));
+        Assert.IsTrue(result is Error);
+        Assert.IsFalse(result is Error<TestClass>);
+    }
+    
+    [Test]
+    public void DeserializeLessSpecificOkShouldWork()
+    {
+        var genericResult = new Ok<int>(42);
+        var json = JsonSerializer.Serialize(genericResult);
+        Result result = new Error();
+        Assert.DoesNotThrow(() => result = Result.FromJson(json));
+        Assert.IsTrue(result is Ok);
+        Assert.IsFalse(result is Ok<int>);
+    }
+    
+    
+    [Test]
+    public void DeserializeMoreSpecificErrorShouldWork()
+    {
+        var result = new Error("not ok");
+        var json = JsonSerializer.Serialize(result);
+        Assert.DoesNotThrow(() => Result<int>.FromJson(json));
+    }
+    
+    [Test]
+    public void DeserializeMoreSpecificOkShouldWork()
+    {
+        var result = new Ok();
+        var json = JsonSerializer.Serialize(result);
+        Result r = new Error<int>("nothing here yet");
+        Assert.DoesNotThrow(() => r = Result<int>.FromJson(json));
+        Assert.IsTrue(r is Ok<int> ok && ok.Value == default);
+    }
 }
