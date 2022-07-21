@@ -6,6 +6,7 @@
         <Authors>luxick</Authors>
         <Description>Generic wrappers for operation results</Description>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <icon>../images/icon.png</icon>
 
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
