@@ -78,7 +78,7 @@ public class ReturnTests
     public void ConvertToIntEmptyString()
     {
         var r = ConvertToInt("");
-        Assert.IsFalse(r.Success);
+        Assert.IsFalse(r.IsOk);
         Assert.IsTrue(r.GetMessage() == "no Input");
     }
 
@@ -86,7 +86,7 @@ public class ReturnTests
     public void ConvertToIntInvalidInput()
     {
         var r = ConvertToInt("Something invalid");
-        Assert.IsFalse(r.Success);
+        Assert.IsFalse(r.IsOk);
         Assert.IsTrue(r.GetMessage() == nameof(FormatException));
     }
 }

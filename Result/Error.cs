@@ -1,57 +1,125 @@
 ﻿namespace luxick.Result;
 
+/// <summary>
+/// A negative result 
+/// </summary>
 [Serializable]
 public sealed class Error : Result
 {
-    public override bool Success => false;
-    
+    /// <inheritdoc />
+    public override bool IsOk => false;
+
+    /// <inheritdoc />
     public override List<string> Messages { get; set; } = new();
-    
+
+    /// <inheritdoc />
     public override string GetMessage() => Messages.FirstOrDefault() ?? "";
-    
+
+    /// <inheritdoc />
     public override string GetFullMessage() => string.Join("\n", Messages);
     
+    /// <summary>
+    /// New negative result
+    /// </summary>
     public Error() { }
 
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="ex">An exception</param>
     public Error(Exception ex) => Messages.AddRange(Helpers.ParseException(ex));
     
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="msg">Custom messsage</param>
+    /// <param name="ex">An exception</param>
     public Error(string msg, Exception ex)
     {
         Messages.Add(msg);
         Messages.AddRange(Helpers.ParseException(ex));
     }
 
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="msg">Error message</param>
     public Error(string msg) => Messages.Add(msg);
 
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="msgs">Error messages</param>
     public Error(IEnumerable<string> msgs) => Messages.AddRange(msgs);
 
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="msgs">Error messages</param>
     public Error(params string[] msgs) => Messages.AddRange(msgs);
 }
 
+/// <summary>
+/// A negative result
+/// </summary>
+/// <typeparam name="T">Type of the value the operation could have produced</typeparam>
 [Serializable]
 public sealed class Error<T> : Result<T>
 {
+    /// <summary>
+    /// NEVER USE THIS. Negative result will not have a result value.
+    /// </summary>
     public override T Value { get; set; } = default!;
 
-    public override bool Success => false;
+    /// <inheritdoc />
+    public override bool IsOk => false;
+
+    /// <inheritdoc />
     public override List<string> Messages { get; set; } = new();
 
+    /// <inheritdoc />
     public override string GetMessage() => Messages.FirstOrDefault() ?? "";
+
+    /// <inheritdoc />
+    public override string GetFullMessage() => string.Join("\n", Messages);
     
-    public override string GetFullMessage() => string.Join("\n", Messages);    
+    /// <summary>
+    /// New negative result
+    /// </summary>
     public Error() { }
-    
+
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="ex">An exception</param>
     public Error(Exception ex) => Messages.AddRange(Helpers.ParseException(ex));
     
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="msg">Custom messsage</param>
+    /// <param name="ex">An exception</param>
     public Error(string msg, Exception ex)
     {
         Messages.Add(msg);
         Messages.AddRange(Helpers.ParseException(ex));
     }
 
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="msg">Error message</param>
     public Error(string msg) => Messages.Add(msg);
 
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="msgs">Error messages</param>
     public Error(IEnumerable<string> msgs) => Messages.AddRange(msgs);
 
+    /// <summary>
+    /// New negative result
+    /// </summary>
+    /// <param name="msgs">Error messages</param>
     public Error(params string[] msgs) => Messages.AddRange(msgs);
 }

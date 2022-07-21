@@ -14,7 +14,7 @@ public class Tests
     public void NewOk()
     {
         var res = new Ok();
-        Assert.IsTrue(res.Success);
+        Assert.IsTrue(res.IsOk);
     }
 
     [Test]

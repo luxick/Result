@@ -5,7 +5,8 @@
         <Version>1.0.0</Version>
         <Authors>luxick</Authors>
         <Description>Generic wrappers for operation results</Description>
-        
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
         <Nullable>enable</Nullable>

@@ -3,10 +3,15 @@ using System.Text.Json.Serialization;
 
 namespace luxick.Result;
 
+/// <summary>
+/// Custom JSON Converter for deserializing the correct Type of Result based on the <see cref="Result.IsOk"/> discriminator.
+/// </summary>
 public class ResultConverter : JsonConverter<Result>
 {
+    /// <inheritdoc />
     public override bool CanConvert(Type typeToConvert) => typeof(Result).IsAssignableFrom(typeToConvert);
-    
+
+    /// <inheritdoc />
     public override Result? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var readerClone = reader;
@@ -19,7 +24,7 @@ public class ResultConverter : JsonConverter<Result>
         {
             if (readerClone.TokenType != JsonTokenType.PropertyName) continue;
             if (readerClone.GetString() != "Success") continue;
-            
+
             readerClone.Read();
             return readerClone.GetBoolean() switch
             {
@@ -31,13 +36,21 @@ public class ResultConverter : JsonConverter<Result>
         throw new JsonException();
     }
 
-    public override void Write(Utf8JsonWriter writer, Result value, JsonSerializerOptions options) => throw new NotSupportedException();
+    /// <inheritdoc />
+    public override void Write(Utf8JsonWriter writer, Result value, JsonSerializerOptions options)
+        => throw new NotSupportedException();
 }
 
+/// <summary>
+/// Custom JSON Converter for deserializing the correct Type of Result based on the <see cref="Result.IsOk"/> discriminator.
+/// </summary>
+/// <typeparam name="T">Type of the value within the result</typeparam>
 public class GenericResultConverter<T> : JsonConverter<Result>
 {
+    /// <inheritdoc />
     public override bool CanConvert(Type typeToConvert) => typeof(Result).IsAssignableFrom(typeToConvert);
-    
+
+    /// <inheritdoc />
     public override Result? Read(ref Utf8JsonReader reader, Type typeToConvert, JsonSerializerOptions options)
     {
         var readerClone = reader;
@@ -50,7 +63,7 @@ public class GenericResultConverter<T> : JsonConverter<Result>
         {
             if (readerClone.TokenType != JsonTokenType.PropertyName) continue;
             if (readerClone.GetString() != "Success") continue;
-            
+
             readerClone.Read();
             return readerClone.GetBoolean() switch
             {
@@ -62,5 +75,7 @@ public class GenericResultConverter<T> : JsonConverter<Result>
         throw new JsonException();
     }
 
-    public override void Write(Utf8JsonWriter writer, Result value, JsonSerializerOptions options) => throw new NotSupportedException();
+    /// <inheritdoc />
+    public override void Write(Utf8JsonWriter writer, Result value, JsonSerializerOptions options)
+        => throw new NotSupportedException();
 }

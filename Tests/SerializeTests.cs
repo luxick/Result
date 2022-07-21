@@ -44,7 +44,7 @@ public class SerializeTests
         var data = JsonSerializer.Serialize(new Error("Fehler", "Ein Fehler ist aufgetreten"));
         var result = Result.FromJson(data);
         Assert.IsTrue(result is Error);
-        Assert.IsFalse(result.Success);
+        Assert.IsFalse(result.IsOk);
         Assert.IsTrue(result.GetFullMessage() == "Fehler\nEin Fehler ist aufgetreten");
     }
 
@@ -93,7 +93,7 @@ public class SerializeTests
         var json = JsonSerializer.Serialize(new Error<TestClass>("Cloud not create data"));
         var result = Result<TestClass>.FromJson(json);
         
-        Assert.IsFalse(result.Success);
+        Assert.IsFalse(result.IsOk);
         Assert.IsTrue(result is Error<TestClass>);
 
     }
