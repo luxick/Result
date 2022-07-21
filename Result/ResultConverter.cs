@@ -23,7 +23,7 @@ public class ResultConverter : JsonConverter<Result>
         while (readerClone.Read())
         {
             if (readerClone.TokenType != JsonTokenType.PropertyName) continue;
-            if (readerClone.GetString() != "Success") continue;
+            if (readerClone.GetString() != nameof(Result.IsOk)) continue;
 
             readerClone.Read();
             return readerClone.GetBoolean() switch
@@ -62,7 +62,7 @@ public class GenericResultConverter<T> : JsonConverter<Result>
         while (readerClone.Read())
         {
             if (readerClone.TokenType != JsonTokenType.PropertyName) continue;
-            if (readerClone.GetString() != "Success") continue;
+            if (readerClone.GetString() != nameof(Result.IsOk)) continue;
 
             readerClone.Read();
             return readerClone.GetBoolean() switch
