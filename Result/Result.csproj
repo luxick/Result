@@ -2,11 +2,12 @@
     
     <PropertyGroup>
         <PackageId>luxick.Result</PackageId>
-        <Version>2.0.0</Version>
+        <Version>2.0.1</Version>
         <Authors>luxick</Authors>
         <Description>Generic wrappers for operation results</Description>
         <GenerateDocumentationFile>true</GenerateDocumentationFile>
-        <icon>../images/icon.png</icon>
+        <PackageIcon>../images/icon.png</PackageIcon>
+        <PackageProjectUrl>https://github.com/luxick/Result</PackageProjectUrl>
 
         <TargetFramework>net6.0</TargetFramework>
         <ImplicitUsings>enable</ImplicitUsings>
