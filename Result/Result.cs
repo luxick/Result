@@ -21,19 +21,19 @@ public abstract class Result
     /// <summary>
     /// List of Messages for the operartion
     /// </summary>
-    public abstract List<string> Messages { get; set; }
+    public List<string> Messages { get; set; } = new();
 
     /// <summary>
     /// Gets the short message for the operation
     /// </summary>
     /// <returns>First element of <see cref="Messages"/></returns>
-    public abstract string GetMessage();
+    public string GetMessage() => Messages.FirstOrDefault() ?? "";
 
     /// <summary>
     /// Gets the full message for the operation
     /// </summary>
     /// <returns>All elements of <see cref="Messages"/> combined</returns>
-    public abstract string GetFullMessage();
+    public string GetFullMessage()  => string.Join("\n", Messages);
 
     /// <summary>
     /// Deserialize a JSON string to the appropriate Result subclass

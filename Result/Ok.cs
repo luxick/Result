@@ -9,15 +9,6 @@ public sealed class Ok : Result
     /// <inheritdoc />
     public override bool IsOk => true;
 
-    /// <inheritdoc />
-    public override List<string> Messages { get; set; } = new();
-
-    /// <inheritdoc />
-    public override string GetMessage() => Messages.FirstOrDefault() ?? "";
-
-    /// <inheritdoc />
-    public override string GetFullMessage() => string.Join("\n", Messages);
-
     /// <summary>
     /// New positive result
     /// </summary>
@@ -56,15 +47,6 @@ public sealed class Ok<T> : Result<T>
 
     /// <inheritdoc />
     public override bool IsOk => true;
-
-    /// <inheritdoc />
-    public override List<string> Messages { get; set; } = new();
-
-    /// <inheritdoc />
-    public override string GetMessage() => Messages.FirstOrDefault() ?? "";
-
-    /// <inheritdoc />
-    public override string GetFullMessage() => string.Join("\n", Messages);
     
     /// <summary>
     /// New positive result
